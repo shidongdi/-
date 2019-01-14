@@ -1,0 +1,385 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Actuator+Prometheus+Grafana监控介绍 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="客户端埋点一期功能介绍.html" />
+    
+    
+    <link rel="prev" href="zipkin分布式性能追踪-弃用.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="监控平台立项报告一期.html">
+            
+                <a href="监控平台立项报告一期.html">
+            
+                    
+                    监控平台立项报告一期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path=".md">
+            
+                <span>
+            
+                    
+                    服务端监控方案介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="zipkin分布式性能追踪-弃用.html">
+            
+                <a href="zipkin分布式性能追踪-弃用.html">
+            
+                    
+                    zipkin分布式性能追踪-弃用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2" data-path="Actuator+Prometheus+Grafana监控介绍.html">
+            
+                <a href="Actuator+Prometheus+Grafana监控介绍.html">
+            
+                    
+                    Actuator+Prometheus+Grafana监控介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="客户端埋点一期功能介绍.html">
+            
+                <a href="客户端埋点一期功能介绍.html">
+            
+                    
+                    客户端埋点一期功能介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="服务端监控系统搭建.html">
+            
+                <a href="服务端监控系统搭建.html">
+            
+                    
+                    服务端监控系统搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Actuator+Prometheus+Grafana监控介绍</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="actuatorprometheusgrafana&#x76D1;&#x63A7;&#x4ECB;&#x7ECD;">Actuator+Prometheus+Grafana&#x76D1;&#x63A7;&#x4ECB;&#x7ECD;</h1>
+<ul>
+<li><p>Actuator&#x4ECB;&#x7ECD;</p>
+<p>Actuator&#x662F;springboot&#x63D0;&#x4F9B;&#x5BF9;&#x5E94;&#x7528;&#x81EA;&#x8EAB;&#x76D1;&#x63A7;&#xFF0C;&#x4EE5;&#x53CA;&#x5BF9;&#x5E94;&#x7528;&#x7CFB;&#x7EDF;&#x914D;&#x7F6E;&#x67E5;&#x770B;&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x5065;&#x5EB7;&#x68C0;&#x67E5;&#x3001;&#x5BA1;&#x8BA1;&#x3001;&#x7EDF;&#x8BA1;&#x548C;HTTP&#x8FFD;&#x8E2A;&#x7B49;&#x3002;&#x6240;&#x6709;&#x7684;&#x8FD9;&#x4E9B;&#x7279;&#x6027;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;JMX&#x6216;&#x8005;HTTP endpoints&#x6765;&#x83B7;&#x5F97;&#x3002;</p>
+<p>| Endpoint ID    | Description                                                  |
+| -------------- | ------------------------------------------------------------ |
+| auditevents    | &#x663E;&#x793A;&#x5E94;&#x7528;&#x66B4;&#x9732;&#x7684;&#x5BA1;&#x8BA1;&#x4E8B;&#x4EF6; (&#x6BD4;&#x5982;&#x8BA4;&#x8BC1;&#x8FDB;&#x5165;&#x3001;&#x8BA2;&#x5355;&#x5931;&#x8D25;)              |
+| info           | &#x663E;&#x793A;&#x5E94;&#x7528;&#x7684;&#x57FA;&#x672C;&#x4FE1;&#x606F;                                           |
+| health         | &#x663E;&#x793A;&#x5E94;&#x7528;&#x7684;&#x5065;&#x5EB7;&#x72B6;&#x6001;                                           |
+| metrics        | &#x663E;&#x793A;&#x5E94;&#x7528;&#x591A;&#x6837;&#x7684;&#x5EA6;&#x91CF;&#x4FE1;&#x606F;                                       |
+| loggers        | &#x663E;&#x793A;&#x548C;&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x7684;loggers                                      |
+| logfile        | &#x8FD4;&#x56DE;log file&#x4E2D;&#x7684;&#x5185;&#x5BB9;(&#x5982;&#x679C;logging.file&#x6216;&#x8005;logging.path&#x88AB;&#x8BBE;&#x7F6E;) |
+| httptrace      | &#x663E;&#x793A;HTTP&#x8DB3;&#x8FF9;&#xFF0C;&#x6700;&#x8FD1;100&#x4E2A;HTTP request/repsponse                |
+| env            | &#x663E;&#x793A;&#x5F53;&#x524D;&#x7684;&#x73AF;&#x5883;&#x7279;&#x6027;                                           |
+| flyway         | &#x663E;&#x793A;&#x6570;&#x636E;&#x5E93;&#x8FC1;&#x79FB;&#x8DEF;&#x5F84;&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;                                 |
+| liquidbase     | &#x663E;&#x793A;Liquibase &#x6570;&#x636E;&#x5E93;&#x8FC1;&#x79FB;&#x7684;&#x7EA4;&#x7EC6;&#x4FE1;&#x606F;                           |
+| shutdown       | &#x8BA9;&#x4F60;&#x9010;&#x6B65;&#x5173;&#x95ED;&#x5E94;&#x7528;                                             |
+| mappings       | &#x663E;&#x793A;&#x6240;&#x6709;&#x7684;@RequestMapping&#x8DEF;&#x5F84;                                |
+| scheduledtasks | &#x663E;&#x793A;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x8C03;&#x5EA6;&#x4EFB;&#x52A1;                                         |
+| threaddump     | &#x6267;&#x884C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;dump                                             |
+| heapdump       | &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;GZip&#x538B;&#x7F29;&#x7684;JVM&#x5806;dump                                  |</p>
+</li>
+<li><p>Prometheus&#x4ECB;&#x7ECD;</p>
+<p>Prometheus&#xFF08;&#x666E;&#x7F57;&#x7C73;&#x4FEE;&#x65AF;&#xFF09;&#x662F;&#x4E00;&#x4E2A;&#x5F00;&#x6E90;&#x7CFB;&#x7EDF;&#x76D1;&#x63A7;&#x548C;&#x8B66;&#x62A5;&#x5DE5;&#x5177;&#xFF0C;&#x6700;&#x521D;&#x662F;&#x5728;SoundCloud&#x5EFA;&#x7ACB;&#x7684;&#x3002;&#x81EA;2012&#x5E74;&#x6210;&#x7ACB;&#x4EE5;&#x6765;&#xFF0C;&#x8BB8;&#x591A;&#x516C;&#x53F8;&#x548C;&#x7EC4;&#x7EC7;&#x90FD;&#x91C7;&#x7528;&#x4E86;&#x666E;&#x7F57;&#x7C73;&#x4FEE;&#x65AF;&#xFF0C;&#x8BE5;&#x9879;&#x76EE;&#x62E5;&#x6709;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x6D3B;&#x8DC3;&#x7684;&#x5F00;&#x53D1;&#x8005;&#x548C;&#x7528;&#x6237;&#x793E;&#x533A;&#x3002;&#x5B83;&#x73B0;&#x5728;&#x662F;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x5F00;&#x653E;&#x6E90;&#x7801;&#x9879;&#x76EE;&#xFF0C;&#x5E76;&#x4E14;&#x72EC;&#x7ACB;&#x4E8E;&#x4EFB;&#x4F55;&#x516C;&#x53F8;&#x3002;&#x4E3A;&#x4E86;&#x5F3A;&#x8C03;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x4E3A;&#x4E86;&#x6F84;&#x6E05;&#x9879;&#x76EE;&#x7684;&#x6CBB;&#x7406;&#x7ED3;&#x6784;&#xFF0C;&#x666E;&#x7F57;&#x7C73;&#x4FEE;&#x65AF;&#x5728;2016&#x5E74;&#x52A0;&#x5165;&#x4E86;&#x4E91;&#x8BA1;&#x7B97;&#x57FA;&#x91D1;&#x4F1A;&#xFF0C;&#x6210;&#x4E3A;&#x7EE7;Kubernetes&#x4E4B;&#x540E;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x6258;&#x7BA1;&#x9879;&#x76EE;&#x3002;</p>
+<ul>
+<li><p>&#x7279;&#x5F81;&#xFF1A;</p>
+<p>Prometheus&#x7684;&#x4E3B;&#x8981;&#x7279;&#x5F81;&#x6709;&#xFF1A;</p>
+<p>&#x591A;&#x7EF4;&#x5EA6;&#x6570;&#x636E;&#x6A21;&#x578B;
+&#x7075;&#x6D3B;&#x7684;&#x67E5;&#x8BE2;&#x8BED;&#x8A00;
+&#x4E0D;&#x4F9D;&#x8D56;&#x5206;&#x5E03;&#x5F0F;&#x5B58;&#x50A8;&#xFF0C;&#x5355;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x8282;&#x70B9;&#x662F;&#x81EA;&#x4E3B;&#x7684;
+&#x4EE5;HTTP&#x65B9;&#x5F0F;&#xFF0C;&#x901A;&#x8FC7;pull&#x6A21;&#x578B;&#x62C9;&#x53BB;&#x65F6;&#x95F4;&#x5E8F;&#x5217;&#x6570;&#x636E;
+&#x4E5F;&#x901A;&#x8FC7;&#x4E2D;&#x95F4;&#x7F51;&#x5173;&#x652F;&#x6301;push&#x6A21;&#x578B;
+&#x901A;&#x8FC7;&#x670D;&#x52A1;&#x53D1;&#x73B0;&#x6216;&#x8005;&#x9759;&#x6001;&#x914D;&#x7F6E;&#xFF0C;&#x6765;&#x53D1;&#x73B0;&#x76EE;&#x6807;&#x670D;&#x52A1;&#x5BF9;&#x8C61;
+&#x652F;&#x6301;&#x591A;&#x79CD;&#x591A;&#x6837;&#x7684;&#x56FE;&#x8868;&#x548C;&#x754C;&#x9762;&#x5C55;&#x793A;&#xFF0C;grafana&#x4E5F;&#x652F;&#x6301;&#x5B83;</p>
+</li>
+<li><p>&#x7EC4;&#x4EF6;</p>
+<p>Prometheus&#x751F;&#x6001;&#x5305;&#x62EC;&#x4E86;&#x5F88;&#x591A;&#x7EC4;&#x4EF6;&#xFF0C;&#x5B83;&#x4EEC;&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x662F;&#x53EF;&#x9009;&#x7684;&#xFF1A;</p>
+<p>&#x4E3B;&#x670D;&#x52A1;Prometheus Server&#x8D1F;&#x8D23;&#x6293;&#x53D6;&#x548C;&#x5B58;&#x50A8;&#x65F6;&#x95F4;&#x5E8F;&#x5217;&#x6570;&#x636E;
+&#x5BA2;&#x6237;&#x5E93;&#x8D1F;&#x8D23;&#x68C0;&#x6D4B;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;
+&#x652F;&#x6301;&#x77ED;&#x751F;&#x547D;&#x5468;&#x671F;&#x7684;PUSH&#x7F51;&#x5173;
+&#x57FA;&#x4E8E;Rails/SQL&#x4EEA;&#x8868;&#x76D8;&#x6784;&#x5EFA;&#x5668;&#x7684;GUI
+&#x591A;&#x79CD;&#x5BFC;&#x51FA;&#x5DE5;&#x5177;&#xFF0C;&#x53EF;&#x4EE5;&#x652F;&#x6301;Prometheus&#x5B58;&#x50A8;&#x6570;&#x636E;&#x8F6C;&#x5316;&#x4E3A;HAProxy&#x3001;StatsD&#x3001;Graphite&#x7B49;&#x5DE5;&#x5177;&#x6240;&#x9700;&#x8981;&#x7684;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x683C;&#x5F0F;
+&#x8B66;&#x544A;&#x7BA1;&#x7406;&#x5668;
+&#x547D;&#x4EE4;&#x884C;&#x67E5;&#x8BE2;&#x5DE5;&#x5177;
+&#x5176;&#x4ED6;&#x5404;&#x79CD;&#x652F;&#x6491;&#x5DE5;&#x5177;
+&#x591A;&#x6570;Prometheus&#x7EC4;&#x4EF6;&#x662F;Go&#x8BED;&#x8A00;&#x5199;&#x7684;&#xFF0C;&#x8FD9;&#x4F7F;&#x5F97;&#x8FD9;&#x4E9B;&#x7EC4;&#x4EF6;&#x5F88;&#x5BB9;&#x6613;&#x7F16;&#x8BD1;&#x548C;&#x90E8;&#x7F72;&#x3002;</p>
+</li>
+<li><p>&#x67B6;&#x6784;</p>
+<p>&#x4E0B;&#x9762;&#x8FD9;&#x5F20;&#x56FE;&#x8BF4;&#x660E;&#x4E86;Prometheus&#x7684;&#x6574;&#x4F53;&#x67B6;&#x6784;&#xFF0C;&#x4EE5;&#x53CA;&#x751F;&#x6001;&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x7EC4;&#x4EF6;&#x4F5C;&#x7528;:</p>
+<p><img src="https://prometheus.io/assets/architecture.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>  Prometheus&#x670D;&#x52A1;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x76EE;&#x6807;&#x62C9;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x6216;&#x8005;&#x95F4;&#x63A5;&#x5730;&#x901A;&#x8FC7;&#x4E2D;&#x95F4;&#x7F51;&#x5173;&#x62C9;&#x53D6;&#x6570;&#x636E;&#x3002;&#x5B83;&#x5728;&#x672C;&#x5730;&#x5B58;&#x50A8;&#x6293;&#x53D6;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;&#x4E00;&#x5B9A;&#x89C4;&#x5219;&#x8FDB;&#x884C;&#x6E05;&#x7406;&#x548C;&#x6574;&#x7406;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x628A;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x5B58;&#x50A8;&#x5230;&#x65B0;&#x7684;&#x65F6;&#x95F4;&#x5E8F;&#x5217;&#x4E2D;&#xFF0C;PromQL&#x548C;&#x5176;&#x4ED6;API&#x53EF;&#x89C6;&#x5316;&#x5730;&#x5C55;&#x793A;&#x6536;&#x96C6;&#x7684;&#x6570;&#x636E;</p>
+<ul>
+<li><p>&#x9002;&#x7528;&#x573A;&#x666F;</p>
+<p>Prometheus&#x5728;&#x8BB0;&#x5F55;&#x7EAF;&#x6570;&#x5B57;&#x65F6;&#x95F4;&#x5E8F;&#x5217;&#x65B9;&#x9762;&#x8868;&#x73B0;&#x975E;&#x5E38;&#x597D;&#x3002;&#x5B83;&#x65E2;&#x9002;&#x7528;&#x4E8E;&#x9762;&#x5411;&#x670D;&#x52A1;&#x5668;&#x7B49;&#x786C;&#x4EF6;&#x6307;&#x6807;&#x7684;&#x76D1;&#x63A7;&#xFF0C;&#x4E5F;&#x9002;&#x7528;&#x4E8E;&#x9AD8;&#x52A8;&#x6001;&#x7684;&#x9762;&#x5411;&#x670D;&#x52A1;&#x67B6;&#x6784;&#x7684;&#x76D1;&#x63A7;&#x3002;&#x5BF9;&#x4E8E;&#x73B0;&#x5728;&#x6D41;&#x884C;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#xFF0C;Prometheus&#x7684;&#x591A;&#x7EF4;&#x5EA6;&#x6570;&#x636E;&#x6536;&#x96C6;&#x548C;&#x6570;&#x636E;&#x7B5B;&#x9009;&#x67E5;&#x8BE2;&#x8BED;&#x8A00;&#x4E5F;&#x662F;&#x975E;&#x5E38;&#x7684;&#x5F3A;&#x5927;&#x3002;</p>
+<p>Prometheus&#x662F;&#x4E3A;&#x670D;&#x52A1;&#x7684;&#x53EF;&#x9760;&#x6027;&#x800C;&#x8BBE;&#x8BA1;&#x7684;&#xFF0C;&#x5F53;&#x670D;&#x52A1;&#x51FA;&#x73B0;&#x6545;&#x969C;&#x65F6;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x4F7F;&#x4F60;&#x5FEB;&#x901F;&#x5B9A;&#x4F4D;&#x548C;&#x8BCA;&#x65AD;&#x95EE;&#x9898;&#x3002;&#x5B83;&#x7684;&#x642D;&#x5EFA;&#x8FC7;&#x7A0B;&#x5BF9;&#x786C;&#x4EF6;&#x548C;&#x670D;&#x52A1;&#x6CA1;&#x6709;&#x5F88;&#x5F3A;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x3002;</p>
+</li>
+<li><p>&#x4E0D;&#x9002;&#x7528;&#x573A;&#x666F;</p>
+<p>Prometheus&#xFF0C;&#x5B83;&#x7684;&#x4EF7;&#x503C;&#x5728;&#x4E8E;&#x53EF;&#x9760;&#x6027;&#xFF0C;&#x751A;&#x81F3;&#x5728;&#x5F88;&#x6076;&#x52A3;&#x7684;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x4F60;&#x90FD;&#x53EF;&#x4EE5;&#x968F;&#x65F6;&#x8BBF;&#x95EE;&#x5B83;&#x548C;&#x67E5;&#x770B;&#x7CFB;&#x7EDF;&#x670D;&#x52A1;&#x5404;&#x79CD;&#x6307;&#x6807;&#x7684;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#x3002; &#x5982;&#x679C;&#x4F60;&#x5BF9;&#x7EDF;&#x8BA1;&#x6570;&#x636E;&#x9700;&#x8981;100%&#x7684;&#x7CBE;&#x786E;&#xFF0C;&#x5B83;&#x5E76;&#x4E0D;&#x9002;&#x7528;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x5B83;&#x4E0D;&#x9002;&#x7528;&#x4E8E;&#x5B9E;&#x65F6;&#x8BA1;&#x8D39;&#x7CFB;&#x7EDF;</p>
+</li>
+</ul>
+<ul>
+<li>Grafana&#x4ECB;&#x7ECD;</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="zipkin分布式性能追踪-弃用.html" class="navigation navigation-prev " aria-label="Previous page: zipkin分布式性能追踪-弃用">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="客户端埋点一期功能介绍.html" class="navigation navigation-next " aria-label="Next page: 客户端埋点一期功能介绍">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Actuator+Prometheus+Grafana监控介绍","level":"1.3.2","depth":2,"next":{"title":"客户端埋点一期功能介绍","level":"1.4","depth":1,"path":"客户端埋点一期功能介绍.md","ref":"客户端埋点一期功能介绍.md","articles":[]},"previous":{"title":"zipkin分布式性能追踪-弃用","level":"1.3.1","depth":2,"path":"zipkin分布式性能追踪-弃用.md","ref":"zipkin分布式性能追踪-弃用.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Actuator+Prometheus+Grafana监控介绍.md","mtime":"2019-01-11T08:58:55.758Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-14T07:37:09.549Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
